@@ -1,24 +1,33 @@
-// Initialize button with user's preferred color
-let changeColor = document.getElementById("changeColor");
+let setting = document.getElementById("set");
+const settingKey = "setting";
+const languagesKey = "languages";
+const tokenKey = "token"
 
-chrome.storage.sync.get("color", ({ color }) => {
-  changeColor.style.backgroundColor = color;
-});
-
-// When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      function: setPageBackgroundColor,
-    });
-  });
-  
-  // The body of this function will be executed as a content script inside the
-  // current page
-  function setPageBackgroundColor() {
-    chrome.storage.sync.get("color", ({ color }) => {
-      document.body.style.backgroundColor = color;
+// load languages
+chrome.storage.sync.get(settingKey, (value) => {
+  if (value !== undefined && value[settingKey] !== undefined) {
+    document.getElementById(languagesKey).value = value[settingKey][languagesKey];
+    document.getElementById(tokenKey).value = value[settingKey][tokenKey];
+  } else {
+    // default value is en
+    chrome.storage.sync.set(createSettingObject("en", ""), () => {
+      document.getElementById(languagesKey).value = "en";
     });
   }
+});
+
+// When the button is clicked
+setting.addEventListener("click", async () => {
+  var languages = document.getElementById("languages").value;
+  var token = document.getElementById("token").value;
+  chrome.storage.sync.set(createSettingObject(languages, token));
+});
+
+function createSettingObject(languages, token) {
+  var setting = {};
+  var obj = {};
+  obj[languagesKey] = languages;
+  obj[tokenKey] = token;
+  setting[settingKey] = obj;
+  return setting;
+}
