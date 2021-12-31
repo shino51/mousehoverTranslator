@@ -30,7 +30,7 @@ more efficient while browsing and trying to understand the WWW.
 
 ## settings.html, settings.js, settings.css
 Those files are used to setup the extension and uses jquery and bootstrap to 
-make it look nice. The configured settings is keps in chrome storage and retrieved 
+make it look nice. The configured settings are kept in Chrome storage and retrieved 
 by the main module during translation.
 
 ## main.js
@@ -41,14 +41,14 @@ settings and displays the result.
 ## manifest.json
 The manifest is required for Chrome to describe the extension. 
 Although the latest manifest version is 3, manifest version 2 is 
-used in this project because of it's easier why to describe permissions
+used in this project because of the easier way to describe permissions
 and hook up the logic.
 
 # Setup steps
 1. Create a [Microsoft](https://www.microsoft.com/) account and 
 subscribe for the [Microsoft Translator](microsoft.com/en-us/translator/)
     - Microsoft is offering a free version, 
-      if you don't exceed the amount of translations
+      if you don't exceed a certain amount of translations
 
 2. Go to Translator **Keys and Endpoint** page. Copy **KEY 1** and **Region**
 ![Ms Azure portal sample1](assets/setting.png)
