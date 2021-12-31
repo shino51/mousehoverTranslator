@@ -33,7 +33,7 @@ Those files are used to setup the extension and uses jquery and bootstrap to
 make it look nice. The configured settings is keps in chrome storage and retrieved 
 by the main module during translation.
 
-## background.js
+## main.js
 This file contains the main logic to do the translation.
 It's calling the Microsoft Translator with the credentials provided in the
 settings and displays the result.
