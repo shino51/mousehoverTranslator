@@ -1,11 +1,11 @@
 {
   "name": "Multi Translator",
-  "description": "Build an Extension!",
+  "description": "Translate selected text to multiple languages at once",
   "version": "1.0",
   "manifest_version": 2,
   "background": {
     "scripts": [
-      "/js/background.js",
+      "/js/main.js",
       "/js/jquery-3.6.0.min.js"
     ]
   },
@@ -17,7 +17,7 @@
     "<all_urls>"
   ],
   "browser_action": {
-    "default_popup": "/html/popup.html",
+    "default_popup": "/html/settings.html",
     "default_icon": "/images/get_started16.png",
     "default_title": "Multi Translator"
   },
